@@ -1,4 +1,13 @@
 #include "monty.h"
+#include <stdio.h>
+
+/**
+* main - Monty interpreter entry point
+* @argc: Argument counter
+* @argv: Argument Vector
+*
+* Return: Always 0
+*/
 
 int main(int argc, char **argv)
 {
@@ -25,15 +34,15 @@ exit(EXIT_FAILURE);
 while (nread != -1)
 {
 line = NULL;
-nread = getline(&line, &size file);
+nread = getline(&line, &size, file);
 line_number++;
 if (nread > 0)
-{	
+{
 execute(line, &stack, line_number, file);
 }
 free(line);
 }
 fclose(file);
-free_stack(stack);
+free_stack(&stack);
 return (0);
 }
