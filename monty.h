@@ -49,6 +49,9 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+/******FUNCTION PROTOTYPES*****/
+void execute(char *line, stack_t **stack, unsigned int line_number, FILE *file);
+void free_stack(stack_t *stack);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif /* _MONTY_H */
