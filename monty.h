@@ -1,7 +1,8 @@
 #ifndef _MONTY_H
 #define _MONTY_H
 
-#define MAX_NUM 20
+#define STACK 0
+#define QUEUE 1
 
 #include <stdlib.h>
 #include <signal.h>
@@ -51,7 +52,12 @@ typedef struct instruction_s
 
 /******FUNCTION PROTOTYPES*****/
 void execute(char *line, stack_t **stack, unsigned int line_number, FILE *file);
-void free_stack(stack_t *stack);
+void free_stack(stack_t **stack);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+
+/* OPCODE FUNCTIONS */
+int is_integer(char *str);
+void push(stack_t **stack, int arg);
+void pall(stack_t *stack);
 
 #endif /* _MONTY_H */
