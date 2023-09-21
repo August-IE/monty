@@ -10,35 +10,35 @@
  */
 void execute(char *line, stack_t **stack, unsigned int line_number, FILE *file)
 {
-    char *opcode, *value;
-    int arg;
-    (void)*file;
+	char *opcode, *value;
+	int arg;
+	(void)*file;
 
-    opcode = strtok(line, " \t\n");
+	opcode = strtok(line, " \t\n");
 
-    if (opcode == NULL)
-        return;
+	if (opcode == NULL)
+	return;
 
-    if (strcmp(opcode, "push") == 0)
-    {
-        value = strtok(NULL, " \t\n");
-        if (value == NULL || !is_integer(value))
-        {
-            fprintf(stderr, "L%u: usage: push integer\n", line_number);
-            exit(EXIT_FAILURE);
-        }
-        arg = atoi(value);
-        push(stack, arg);
-    }
-    else if (strcmp(opcode, "pall") == 0)
-    {
-        pall(*stack);
-    }
-    else
-    {
-        fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-        exit(EXIT_FAILURE);
-    }
+	if (strcmp(opcode, "push") == 0)
+	{
+	value = strtok(NULL, " \t\n");
+	if (value == NULL || !is_integer(value))
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	arg = atoi(value);
+	push(stack, arg);
+	}
+	else if (strcmp(opcode, "pall") == 0)
+	{
+		pall(*stack);
+	}
+	else
+	{
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+	exit(EXIT_FAILURE);
+	}
 }
 
 /**
@@ -48,21 +48,24 @@ void execute(char *line, stack_t **stack, unsigned int line_number, FILE *file)
  */
 void push(stack_t **stack, int arg)
 {
-    stack_t *new_node = malloc(sizeof(stack_t));
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-    new_node->n = arg;
-    new_node->prev = NULL;
-    new_node->next = *stack;
+	if (new_node == NULL)
+	{
+	fprintf(stderr, "Error: malloc failed\n");
+	exit(EXIT_FAILURE);
+	}
 
-    if (*stack != NULL)
-        (*stack)->prev = new_node;
+	new_node->n = arg;
+	new_node->prev = NULL;
+	new_node->next = *stack;
 
-    *stack = new_node;
+	if (*stack != NULL)
+	{
+		(*stack)->prev = new_node;
+	}
+
+	*stack = new_node;
 }
 
 /**
@@ -71,11 +74,11 @@ void push(stack_t **stack, int arg)
  */
 void pall(stack_t *stack)
 {
-    while (stack != NULL)
-    {
-        printf("%d\n", stack->n);
-        stack = stack->next;
-    }
+	while (stack != NULL)
+	{
+		printf("%d\n", stack->n);
+		stack = stack->next;
+	}
 }
 
 /**
@@ -85,18 +88,18 @@ void pall(stack_t *stack)
  */
 int is_integer(char *str)
 {
-    int i = 0;
+	int i = 0;
 
-    if (str == NULL)
-        return 0;
+	if (str == NULL)
+	return (0);
 
-    if (str[0] == '-')
-        i = 1;
+	if (str[0] == '-')
+	i = 1;
 
-    for (; str[i] != '\0'; i++)
-    {
-        if (str[i] < '0' || str[i] > '9')
-            return 0;
-    }
-    return 1;
+	for (; str[i] != '\0'; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+		return (0);
+	}
+	return (1);
 }

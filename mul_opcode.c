@@ -13,7 +13,7 @@ int product;
 if (*stack == NULL || (*stack)->next == NULL)
 {
 fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-free_stack(*stack);
+free_stack(&(*stack));
 exit(EXIT_FAILURE);
 }
 
@@ -22,5 +22,5 @@ product = (*stack)->n * (*stack)->next->n;
 (*stack)->next->n = product;
 
 /* remove the top element from the stack */
-pop(stack, line_number);
+_pop(stack, line_number);
 }

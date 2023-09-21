@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * pop - removes the top element of the stack.
+ * _pop - removes the top element of the stack.
  * @stack: pointer to the top of the stack.
  * @line_number: line number of opcode.
  */
@@ -12,7 +12,7 @@ stack_t *top;
 if (*stack == NULL) /* check if stack is empty */
 {
 fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-free_stack(*stack);
+free_stack(&(*stack));
 exit(EXIT_FAILURE);
 }
 top = *stack; /* store the top element in a temporary variable */

@@ -15,7 +15,7 @@ length = count_stack(*stack);
 if (length < 2)
 {
 fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
-free_stack(*stack);
+free_stack(&(*stack));
 exit(EXIT_FAILURE);
 }
 
@@ -23,7 +23,7 @@ a = top->n;
 if (a == 0)
 {
 fprintf(stderr, "L%u: division by zero\n", line_number);
-free_stack(*stack);
+free_stack(&(*stack));
 exit(EXIT_FAILURE);
 }
 b = top->next->n;
