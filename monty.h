@@ -59,5 +59,13 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 int is_integer(char *str);
 void push(stack_t **stack, int arg);
 void pall(stack_t *stack);
+void _pop(stack_t **stack, unsigned int line_number);
+
+/*MATH OPCODE FUNCTIONS*/
+void _sub(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _divide(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
 
 #endif /* _MONTY_H */
